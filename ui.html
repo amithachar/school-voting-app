@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>School Voting App</title>
+</head>
+<body>
+  <h1>Vote for Your School Leader</h1>
+  <button onclick="vote(1)">Vote for Candidate 1</button>
+  <button onclick="vote(2)">Vote for Candidate 2</button>
+  <button onclick="vote(3)">Vote for Candidate 3</button>
+
+  <script>
+    function vote(candidateId) {
+      fetch('https://your-api.azurewebsites.net/vote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ candidateId })
+      })
+      .then(res => res.text())
+      .then(msg => alert(msg));
+    }
+  </script>
+</body>
+</html>
